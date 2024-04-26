@@ -15,12 +15,13 @@ header{
     padding: 20px 540px;
     color: #294634;
     background-color: #d49e59;
-    
+    border-radius: 30px;
 }
 .one button{
     padding: 20px 43px;
     color: #d49e59;
     background-color: rgb(32, 30, 30);
+    border-radius: 10px;
 }
 .two{
     display: grid;
