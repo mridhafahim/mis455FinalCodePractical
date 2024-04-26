@@ -11,3 +11,14 @@ header{
     text-align: center;
 
 }
+.one input{
+    padding: 20px 550px;
+    color: #294634;
+    background-color: #5f4421;
+    
+}
+.one button{
+    padding: 20px 45px;
+    color: #d49e59;
+    background-color: rgb(32, 30, 30);
+}
