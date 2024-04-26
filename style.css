@@ -12,13 +12,38 @@ header{
 
 }
 .one input{
-    padding: 20px 550px;
+    padding: 20px 540px;
     color: #294634;
-    background-color: #5f4421;
+    background-color: #d49e59;
     
 }
 .one button{
-    padding: 20px 45px;
+    padding: 20px 43px;
     color: #d49e59;
     background-color: rgb(32, 30, 30);
+}
+.two{
+    display: grid;
+    grid-template-columns: repeat(auto-fill,minmax(250px,1fr));
+    gap: 20px;
+}
+footer{
+    background-color: rgb(32, 30, 30);
+    color: #d49e59;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+}
+.meal {
+    border: 1px solid #d49e59;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.meal img {
+    width: 100%;
+    border-radius: 5px;
+    margin-bottom: 10px;
 }

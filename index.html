@@ -15,7 +15,70 @@
             <input type="text" id="searchInput" placeholder="Search for a meal...">
             <button onclick="searchMeal()">Search</button>
         </div>
-
+        <div id="mealContainer" class="two"></div>
+        <button id="showAllBtn" onclick="showAllMeals()" style="display: none;">Show All</button>
     </main>
+    <footer>
+        <p>&copy; 2024 Meal Search App</p>
+    </footer>
+
+    <script>
+        async function searchMeal() {
+            const searchInput = document.getElementById('searchInput').value.trim();
+            const url = `https://www.themealdb.com/api/json/v1/1/search.php?s=${searchInput}`;
+            const response = await fetch(url);
+            const data = await response.json();
+
+            const mealContainer = document.getElementById('mealContainer');
+            mealContainer.innerHTML = '';
+
+            if (data.meals) {
+                const meals = data.meals.slice(0, 5);
+                meals.forEach(meal => {
+                    const mealDiv = document.createElement('div');
+                    mealDiv.classList.add('meal');
+                    mealDiv.innerHTML = `
+                        <img src="${meal.strMealThumb}" alt="${meal.strMeal}">
+                        <h2>${meal.strMeal}</h2>
+                        <p>${meal.strInstructions}</p>
+                    `;
+                    mealContainer.appendChild(mealDiv);
+                });
+
+                if (data.meals.length > 5) {
+                    document.getElementById('showAllBtn').style.display = 'block';
+                } else {
+                    document.getElementById('showAllBtn').style.display = 'none';
+                }
+            } else {
+                mealContainer.innerHTML = '<p>No meals found. Please try another search.</p>';
+                document.getElementById('showAllBtn').style.display = 'none';
+            }
+        }
+
+        async function showAllMeals() {
+            const searchInput = document.getElementById('searchInput').value.trim();
+            const url = `https://www.themealdb.com/api/json/v1/1/search.php?s=${searchInput}`;
+            const response = await fetch(url);
+            const data = await response.json();
+
+            const mealContainer = document.getElementById('mealContainer');
+            mealContainer.innerHTML = '';
+
+            if (data.meals) {
+                data.meals.forEach(meal => {
+                    const mealDiv = document.createElement('div');
+                    mealDiv.classList.add('meal');
+                    mealDiv.innerHTML = `
+                        <img src="${meal.strMealThumb}" alt="${meal.strMeal}">
+                        <h2>${meal.strMeal}</h2>
+                        <p>${meal.strInstructions}</p>
+                    `;
+                    mealContainer.appendChild(mealDiv);
+                });
+                document.getElementById('showAllBtn').style.display = 'none';
+            }
+        }
+    </script>
 </body>
 </html>
